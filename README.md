@@ -1,2 +1,2 @@
 # Credit Card Fraud Detection
-### Credit Card Fraud Detection identifies suspicious transactions to prevent unauthorized activities using machine learning.
+### Credit Card Fraud Detection uses algorithms to spot unusual patterns in transactions, helping to quickly identify and prevent fraudulent activities.
