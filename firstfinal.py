@@ -57,25 +57,20 @@ yPred = rfc.predict(xTest)
 import numpy as np
 from sklearn.metrics import (classification_report,accuracy_score,precision_score,recall_score,f1_score,matthews_corrcoef,confusion_matrix,)
 
-# Assuming yTest and yPred are numpy arrays or similar structures
-# Check for NaN values in yTest and yPred
 if np.isnan(yTest).any() or np.isnan(yPred).any():
     print("NaN values found in yTest or yPred. Cleaning data...")
-    # Remove entries where yTest or yPred contains NaN
     valid_indices = ~np.isnan(yTest) & ~np.isnan(yPred)
     yTest = yTest[valid_indices]
     yPred = yPred[valid_indices]
 
-# Check if yTest and yPred are properly aligned
 if len(yTest) != len(yPred):
     raise ValueError("yTest and yPred must have the same length after cleaning.")
 
-# Calculating metrics
-n_outliers = len(yTest)  # Assuming `fraud` and other references are already defined
+n_outliers = len(yTest)
 n_errors = (yPred != yTest).sum()
 print("The model used is Random Forest classifier")
 
-# Metrics
+
 acc = accuracy_score(yTest, yPred)
 print(f"The accuracy is {acc}")
 
@@ -91,7 +86,6 @@ print(f"The F1-Score is {f1}")
 MCC = matthews_corrcoef(yTest, yPred)
 print(f"The Matthews correlation coefficient is {MCC}")
 
-# Optional: Confusion Matrix and Classification Report
 conf_matrix = confusion_matrix(yTest, yPred)
 print("Confusion Matrix:\n", conf_matrix)
 
